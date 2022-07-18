@@ -17,7 +17,13 @@
   --subscription-input-color: rgba(255, 255, 255, 0.3);
 }
 
-body {
+a {
+  text-decoration: none;
+}
+li {
+  list-style-type: none;
+}
+.body {
   color: var(--main-text-color);
   background-color: var(--main-background-color);
   font-family: "Roboto", sans-serif;
@@ -25,27 +31,23 @@ body {
   font-size: 14px;
   letter-spacing: 0.03em;
 }
-a {
-  text-decoration: none;
-}
-li {
-  list-style-type: none;
-}
 .container {
   width: 1200px;
   padding: 0 15px;
   margin-left: auto;
   margin-right: auto;
 }
-section + section {
+.section-features,
+.section-client,
+.section-team {
   padding-top: 94px;
   padding-bottom: 94px;
 }
 /* Стили хедера */
-header {
+.header {
   border-bottom: 1px solid var(--header-border);
 }
-.header {
+.header__container {
   display: flex;
   align-items: center;
 }
@@ -56,31 +58,31 @@ header {
   font-size: 26px;
   line-height: 1.19;
 }
-.header > .logo {
+.header__logo {
   margin-right: 93px;
 }
-.header-logo {
+.logo__text {
   color: var(--header-logo-color);
 }
 .main-nav,
-.nav-address {
+.nav-contact {
   display: flex;
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
 }
-.nav-address {
+.nav-contact {
   margin-left: auto;
 }
-.main-nav li,
-.nav-address li {
+.main-nav__list,
+.nav-contact__list {
   margin-right: 50px;
 }
-.main-nav li:last-child,
-.nav-address li:last-child {
+.main-nav__list:last-child,
+.nav-contact__list:last-child {
   margin-right: 0;
 }
-.main-nav a {
+.main-nav__link {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -91,13 +93,11 @@ header {
   line-height: 1.14;
   letter-spacing: 0.02em;
 }
-.main-nav .activity {
+.main-nav__link--active {
+  position: relative;
   color: var(--accent-text-color);
 }
-.activity {
-  position: relative;
-}
-.activity::after {
+.main-nav__link--active::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -108,31 +108,20 @@ header {
 
   background-color: var(--accent-text-color);
 }
-.main-nav a:hover,
-.main-nav a:focus,
-.nav-address a:focus,
-.nav-address a:hover,
+.main-nav__link:hover,
+.main-nav__link:focus,
+.nav-contact__link:focus,
+.nav-contact__link:hover,
 .footer-address a:focus,
 .footer-address a:hover {
   color: var(--accent-text-color);
 }
-.main-nav a,
-.nav-address a,
+.main-nav__link,
+.nav-contact__link,
 .footer-address a {
   transition: color var(--time-animation) var(--time-function);
 }
-.nav-address-icon {
-  margin-right: 10px;
-
-  fill: currentColor;
-
-  transition: fill var(--time-animation) var(--time-function);
-}
-.nav-address-icon:hover,
-.nav-address-icon:focus {
-  fill: var(--accent-text-color);
-}
-.nav-address a {
+.nav-contact__link {
   display: flex;
   align-items: center;
 
@@ -142,14 +131,28 @@ header {
   line-height: 1.14;
   letter-spacing: 0.02em;
 }
+.nav-contact__icon {
+  margin-right: 10px;
+
+  fill: currentColor;
+
+  transition: fill var(--time-animation) var(--time-function);
+}
+.nav-contact__icon:hover,
+.nav-contact__icon:focus {
+  fill: var(--accent-text-color);
+}
+
 /* Стили Студии */
+
+/* Стили героя */
 
 .hero {
   text-align: center;
   background-color: var(--hero-background-color);
   color: var(--additional-text-color);
 }
-.background {
+.hero__background {
   height: 600px;
   max-width: 1600px;
   margin-right: auto;
@@ -167,7 +170,7 @@ header {
   background-repeat: no-repeat;
   background-position: center;
 }
-.hero h1 {
+.main-title {
   margin-top: 0;
   margin-bottom: 30px;
 
@@ -178,9 +181,10 @@ header {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.order {
+.button {
   height: 50px;
-  padding: 10px 32px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
   border: 1px solid var(--accent-text-color);
   border-radius: 4px;
@@ -200,18 +204,19 @@ header {
   transition: background-color var(--time-animation) var(--time-function),
     border-color var(--time-animation) var(--time-function);
 }
-.order:hover,
-.order:focus {
+.hero__button{
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.button:hover,
+.button:focus {
   border-color: transparent;
   background-color: var(--button-hover);
 }
-.section .title {
-  margin-top: 0;
-  margin-bottom: 10px;
 
-  color: var(--main-title-text-color);
-}
-.hide {
+/* Стили секции Особенности */
+
+.section-features__title {
   /* Удаляем элемент из потока документа */
   position: absolute;
   /* Временное решение для неверно произносимого, размазанного текста */
@@ -232,13 +237,13 @@ header {
   /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
   margin: -1px;
 }
-.feature-list {
+.section-features__list {
   display: flex;
   margin-bottom: 0;
   margin-top: 0;
   padding-left: 0;
 }
-.feature-icon {
+.section-features__icon {
   display: flex;
   width: 270px;
   height: 120px;
@@ -250,86 +255,73 @@ header {
 
   background-color: var(--button-background);
 }
-.feature-list-item,
-.team-list-item {
+.section-features__item,
+.member-card {
   flex-basis: calc((100% -90px) / 4);
   margin-right: 30px;
 }
-.feature-list-item:last-child,
-.team-list-item:last-child,
-.title-list:last-child {
+.section-features__list__item:last-child,
+.member-card:last-child,
+.section-meta__item:last-child {
   margin-right: 0;
+}
+.section-features__subtitle {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+  color: var(--main-title-text-color);
 }
 .team-list-item {
   border-radius: 0px 0px 4px 4px;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 }
-.feature .title {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.14;
-  text-transform: uppercase;
-}
-.feature p {
+
+.section-features__text {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1.71;
 }
-.team {
-  background-color: var(--button-background);
-}
-.team-list-item {
-  background-color: var(--main-background-color);
-}
-.section-works {
+
+/* Стили секции Виды работ */
+
+.section-meta {
   padding-top: 0;
+  padding-bottom: 94px;
 }
-.title.works {
+.section-meta__title,
+.section-team__title,
+.section-client__title {
+  margin-top: 0;
   margin-bottom: 50px;
 
   text-align: center;
 
   font-size: 36px;
   line-height: 1.17;
+  color: var(--main-title-text-color);
 }
-.team-member {
-  padding-bottom: 30px;
-  padding-top: 30px;
-}
-.team h3 {
-  text-align: center;
-
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.19;
-}
-.team p {
-  margin-top: 0;
-  margin-bottom: 16px;
-
-  text-align: center;
-
-  font-size: 16px;
-  line-height: 1.19;
-}
-.list {
+.section-meta__list,
+.section-team__list {
   display: flex;
 
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
 }
-.title-list img {
-  display: block;
-}
-.title-list {
+.section-meta__item {
   position: relative;
 
   flex-basis: calc((100% -60px) / 3);
   margin-right: 30px;
 }
-.desckription {
+.section-meta__img {
+  display: block;
+}
+.section-meta__subtitle {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -347,7 +339,40 @@ header {
   text-transform: uppercase;
   color: var(--additional-text-color);
 }
-.social-icon {
+
+/* Стили секции Команда */
+
+.section-team {
+  background-color: var(--button-background);
+}
+.member-card {
+  background-color: var(--main-background-color);
+}
+.team-member {
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.team-member__title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  text-align: center;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.19;
+  color: var(--main-title-text-color);
+}
+.team-member__position {
+  margin-top: 0;
+  margin-bottom: 16px;
+
+  text-align: center;
+
+  font-size: 16px;
+  line-height: 1.19;
+}
+
+.socials {
   display: flex;
   padding: 0;
 
@@ -356,7 +381,7 @@ header {
 
   justify-content: center;
 }
-.social-icon-link {
+.socials__link {
   display: flex;
   width: 44px;
   height: 44px;
@@ -367,24 +392,33 @@ header {
 
   transition: background-color var(--time-animation) var(--time-function);
 }
-.social-icon li + li {
-  margin-left: 10px;
+.socials__list:not(:last-child) {
+  margin-right: 10px;
 }
-.social-icon-list {
+.socials__icon {
   fill: var(--icon-color);
 
   transition: fill var(--time-animation) var(--time-function);
 }
-.social-icon-link:hover,
-.social-icon-link:focus {
+.socials__link:hover,
+.socials__link:focus {
   background-color: var(--accent-text-color);
 }
-.social-icon-link:hover .social-icon-list,
-.social-icon-link:focus .social-icon-list {
+.socials__link:hover .socials__icon,
+.socials__link:focus .socials__icon {
   fill: var(--additional-text-color);
 }
-.clients {
+
+/* Стили секции Клиенты */
+.client-list {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
   justify-content: center;
+}
+.client-list__item:not(:last-child) {
+  margin-right: 30px;
 }
 .client-link {
   display: flex;
@@ -399,10 +433,7 @@ header {
   transition: border-color var(--time-animation) var(--time-function),
     box-shadow var(--time-animation) var(--time-function);
 }
-.clients li + li {
-  margin-left: 30px;
-}
-.client-list {
+.client-link__img {
   display: flex;
 
   justify-content: center;
@@ -416,8 +447,8 @@ header {
   border-color: var(--accent-text-color);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.client-link:hover .client-list,
-.client-link:focus .client-list {
+.client-link:hover .client-link__img,
+.client-link:focus .client-link__img {
   fill: var(--accent-text-color);
 }
 
@@ -533,7 +564,7 @@ footer {
 .examples-list:last-child {
   margin-right: 0;
 }
-.button {
+.button-a {
   padding: 6px 22px;
   border: none;
   border-radius: 4px;
@@ -553,8 +584,8 @@ footer {
     background-color var(--time-animation) var(--time-function),
     box-shadow var(--time-animation) var(--time-function);
 }
-.button:focus,
-.button:hover {
+.button-a:focus,
+.button-a:hover {
   color: var(--additional-text-color);
   background-color: var(--accent-text-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
