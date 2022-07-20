@@ -37,11 +37,104 @@ li {
   margin-left: auto;
   margin-right: auto;
 }
-.section-features,
-.section-client,
-.section-team {
+.section {
   padding-top: 94px;
   padding-bottom: 94px;
+}
+.section--grey {
+  background-color: var(--button-background);
+}
+.link {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+}
+.button {
+  height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  border: 1px solid var(--accent-text-color);
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  color: var(--additional-text-color);
+  background-color: var(--accent-text-color);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  text-align: center;
+  box-shadow: 0px 4px 4px 0px #00000026;
+
+  transition: background-color var(--time-animation) var(--time-function),
+    border-color var(--time-animation) var(--time-function);
+}
+.button:hover,
+.button:focus {
+  border-color: transparent;
+  background-color: var(--button-hover);
+}
+.is-hidden {
+  /* Удаляем элемент из потока документа */
+  position: absolute;
+  /* Временное решение для неверно произносимого, размазанного текста */
+  white-space: nowrap;
+  /* Устанавливаем минимально возможный размер (некоторые скринридеры игнорируют элементы с нулевой высотой и шириной) */
+  width: 1px;
+  height: 1px;
+  /* Скрываем вылезающий за границы контент */
+  overflow: hidden;
+  /* Сбрасываем любые свойства, которые могут повлиять на размер элемента */
+  border: 0;
+  padding: 0;
+  /* Вырезаем ту часть контента, которая должна отображаться. */
+  /* Устаревшее свойство clip для старых браузеров */
+  clip: rect(0 0 0 0);
+  /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
+  clip-path: inset(50%);
+  /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
+  margin: -1px;
+}
+.title {
+  margin-top: 0;
+  margin-bottom: 50px;
+
+  text-align: center;
+
+  font-size: 36px;
+  line-height: 1.17;
+  color: var(--main-title-text-color);
+}
+.subtitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-transform: uppercase;
+}
+.text {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.71;
+}
+.list {
+  display: flex;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+.list-item {
+  flex-basis: calc((100% -90px) / 4);
+  margin-right: 30px;
+}
+.list-item--white {
+  background-color: var(--main-background-color);
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 /* Стили хедера */
 .header {
@@ -82,16 +175,13 @@ li {
 .nav-contact__list:last-child {
   margin-right: 0;
 }
+
 .main-nav__link {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
 
   color: var(--main-title-text-color);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
 }
 .main-nav__link--active {
   position: relative;
@@ -108,17 +198,11 @@ li {
 
   background-color: var(--accent-text-color);
 }
-.main-nav__link:hover,
-.main-nav__link:focus,
-.nav-contact__link:focus,
-.nav-contact__link:hover,
-.footer-address a:focus,
-.footer-address a:hover {
+.link:hover,
+.link:focus {
   color: var(--accent-text-color);
 }
-.main-nav__link,
-.nav-contact__link,
-.footer-address a {
+.link {
   transition: color var(--time-animation) var(--time-function);
 }
 .nav-contact__link {
@@ -126,20 +210,16 @@ li {
   align-items: center;
 
   color: var(--main-text-color);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.02em;
 }
-.nav-contact__icon {
+.link__icon {
   margin-right: 10px;
 
   fill: currentColor;
 
   transition: fill var(--time-animation) var(--time-function);
 }
-.nav-contact__icon:hover,
-.nav-contact__icon:focus {
+.link__icon:hover,
+.link__icon:focus {
   fill: var(--accent-text-color);
 }
 
@@ -181,68 +261,17 @@ li {
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
-.button {
-  height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-
-  border: 1px solid var(--accent-text-color);
-  border-radius: 4px;
-
-  cursor: pointer;
-
-  color: var(--additional-text-color);
-  background-color: var(--accent-text-color);
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 1.88;
-  letter-spacing: 0.06em;
-  text-align: center;
-  box-shadow: 0px 4px 4px 0px #00000026;
-
-  transition: background-color var(--time-animation) var(--time-function),
-    border-color var(--time-animation) var(--time-function);
-}
-.hero__button{
+.hero__button {
   padding-left: 32px;
   padding-right: 32px;
-}
-.button:hover,
-.button:focus {
-  border-color: transparent;
-  background-color: var(--button-hover);
 }
 
 /* Стили секции Особенности */
 
-.section-features__title {
-  /* Удаляем элемент из потока документа */
-  position: absolute;
-  /* Временное решение для неверно произносимого, размазанного текста */
-  white-space: nowrap;
-  /* Устанавливаем минимально возможный размер (некоторые скринридеры игнорируют элементы с нулевой высотой и шириной) */
-  width: 1px;
-  height: 1px;
-  /* Скрываем вылезающий за границы контент */
-  overflow: hidden;
-  /* Сбрасываем любые свойства, которые могут повлиять на размер элемента */
-  border: 0;
-  padding: 0;
-  /* Вырезаем ту часть контента, которая должна отображаться. */
-  /* Устаревшее свойство clip для старых браузеров */
-  clip: rect(0 0 0 0);
-  /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
-  clip-path: inset(50%);
-  /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
-  margin: -1px;
+.section-features {
+  margin-top: 94px;
 }
-.section-features__list {
-  display: flex;
-  margin-bottom: 0;
-  margin-top: 0;
-  padding-left: 0;
-}
+
 .section-features__icon {
   display: flex;
   width: 270px;
@@ -255,63 +284,19 @@ li {
 
   background-color: var(--button-background);
 }
-.section-features__item,
-.member-card {
-  flex-basis: calc((100% -90px) / 4);
-  margin-right: 30px;
-}
-.section-features__list__item:last-child,
-.member-card:last-child,
+
+.list__item:last-child,
 .section-meta__item:last-child {
   margin-right: 0;
 }
 .section-features__subtitle {
   margin-top: 0;
   margin-bottom: 10px;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.14;
-  text-transform: uppercase;
   color: var(--main-title-text-color);
-}
-.team-list-item {
-  border-radius: 0px 0px 4px 4px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.section-features__text {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.71;
 }
 
 /* Стили секции Виды работ */
 
-.section-meta {
-  padding-top: 0;
-  padding-bottom: 94px;
-}
-.section-meta__title,
-.section-team__title,
-.section-client__title {
-  margin-top: 0;
-  margin-bottom: 50px;
-
-  text-align: center;
-
-  font-size: 36px;
-  line-height: 1.17;
-  color: var(--main-title-text-color);
-}
-.section-meta__list,
-.section-team__list {
-  display: flex;
-
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-}
 .section-meta__item {
   position: relative;
 
@@ -327,7 +312,6 @@ li {
   left: 0;
   display: flex;
 
-
   width: 100%;
   height: 70px;
 
@@ -335,19 +319,11 @@ li {
   align-items: center;
 
   background: rgba(47, 48, 58, 0.8);
-  font-weight: 700;
-  text-transform: uppercase;
   color: var(--additional-text-color);
 }
 
 /* Стили секции Команда */
 
-.section-team {
-  background-color: var(--button-background);
-}
-.member-card {
-  background-color: var(--main-background-color);
-}
 .team-member {
   padding-bottom: 30px;
   padding-top: 30px;
@@ -371,7 +347,7 @@ li {
   font-size: 16px;
   line-height: 1.19;
 }
-
+/* Стили соц сетей */
 .socials {
   display: flex;
   padding: 0;
@@ -410,14 +386,14 @@ li {
 }
 
 /* Стили секции Клиенты */
-.client-list {
+.clients {
   padding-left: 0;
   margin-top: 0;
   margin-bottom: 0;
   display: flex;
   justify-content: center;
 }
-.client-list__item:not(:last-child) {
+.clients__list-item:not(:last-child) {
   margin-right: 30px;
 }
 .client-link {
@@ -453,13 +429,17 @@ li {
 }
 
 /* Стили футера */
-footer {
+/* Стили адреса в футуре */
+.footer {
   padding-top: 60px;
   padding-bottom: 60px;
 
   background-color: var(--hero-background-color);
 }
-.footer-logo {
+.footer__container {
+  display: flex;
+}
+.footer__logo {
   color: var(--additional-text-color);
 }
 .address {
@@ -470,52 +450,38 @@ footer {
   font-style: normal;
   line-height: 1.71;
 }
-.footer-address a {
-  color: var(--adress-text-color);
-  font-style: normal;
-  line-height: 1.71;
-}
-.footer-address li {
-  margin-top: 9px;
-}
 .footer-address {
   margin-top: 0;
   margin-bottom: 0;
   padding-left: 0;
 }
-.footer {
-  display: flex;
+.footer-address__link {
+  color: var(--adress-text-color);
+  font-style: normal;
+  line-height: 1.71;
+}
+.footer-address__item {
+  margin-top: 9px;
 }
 .contacts {
   margin-right: 70px;
 }
-.invitation h2,
-.subscription h2  {
+/* Стили соцсетей ы футере */
+.footer__subtitle {
   margin-bottom: 20px;
 
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
   color: var(--additional-text-color);
 }
-.invitation-list {
-  margin-right: 10px;
-}
-.invitation .list li:last-child {
-  margin-right: 0;
-}
-.invitation-icon {
+.socials__link--grey {
   background-color: rgba(255, 255, 255, 0.1);
 }
-.invitation-icon .social-icon-list {
+.socials__icon--white {
   fill: var(--additional-text-color);
 }
 .subscription {
   margin-left: 73px;
 }
-.subscription-button {
+.subscription__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -525,9 +491,7 @@ footer {
   padding-right: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
-/* box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.15)); */
-
-.subscription-input {
+.input {
   width: 358px;
   height: 50px;
   margin-right: 12px;
@@ -540,13 +504,11 @@ footer {
   background-color: inherit;
   color: var(--adress-text-color);
   outline: none;
-
 }
-.icon-send {
+.subscription__icon {
   margin-left: 10px;
   fill: var(--additional-text-color);
 }
-
 
 /* Стили Портфолио */
 .section.examples {
@@ -638,13 +600,12 @@ footer {
   font-size: 18px;
   line-height: 1.56;
   color: var(--additional-text-color);
-  
+
   transform: translateY(100%);
 
   transition: transform var(--time-animation) var(--time-function);
-
 }
-.portfolio-list-description p{
+.portfolio-list-description p {
   margin: 0;
 }
 .border-box {
@@ -680,17 +641,15 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
- 
+
   background: rgba(0, 0, 0, 0.2);
 
   opacity: 1;
   transition: opacity var(--time-animation) var(--time-function);
-  
 }
 .backdrop.is-hidden {
   pointer-events: none;
   opacity: 0;
-
 }
 .backdrop.is-hidden .modal {
   top: 50%;
@@ -708,7 +667,8 @@ footer {
   border-radius: 4px;
   background-color: var(--additional-text-color);
   font-size: 12px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
   transition: transform var(--time-animation) var(--time-function);
 }
 .button-close {
@@ -728,7 +688,6 @@ footer {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: var(--main-background-color);
-
 }
 .button-close:hover .icon-close,
 .button-close:focus .icon-close {
@@ -744,7 +703,6 @@ footer {
   margin: 0 0 12px 0;
   font-size: 20px;
   color: var(--main-title-text-color);
-
 }
 .form-box {
   position: relative;
@@ -777,7 +735,7 @@ footer {
 .input-date:focus {
   border-color: var(--accent-text-color);
 }
-.input-date:focus + .svg-modal{
+.input-date:focus + .svg-modal {
   fill: var(--accent-text-color);
 }
 
@@ -790,25 +748,25 @@ footer {
   margin-bottom: 20px;
 }
 .approval-box {
-   /* Удаляем элемент из потока документа */
-   position: absolute;
-   /* Временное решение для неверно произносимого, размазанного текста */
-   white-space: nowrap;
-   /* Устанавливаем минимально возможный размер (некоторые скринридеры игнорируют элементы с нулевой высотой и шириной) */
-   width: 1px;
-   height: 1px;
-   /* Скрываем вылезающий за границы контент */
-   overflow: hidden;
-   /* Сбрасываем любые свойства, которые могут повлиять на размер элемента */
-   border: 0;
-   padding: 0;
-   /* Вырезаем ту часть контента, которая должна отображаться. */
-   /* Устаревшее свойство clip для старых браузеров */
-   clip: rect(0 0 0 0);
-   /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
-   clip-path: inset(50%);
-   /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
-   margin: -1px;
+  /* Удаляем элемент из потока документа */
+  position: absolute;
+  /* Временное решение для неверно произносимого, размазанного текста */
+  white-space: nowrap;
+  /* Устанавливаем минимально возможный размер (некоторые скринридеры игнорируют элементы с нулевой высотой и шириной) */
+  width: 1px;
+  height: 1px;
+  /* Скрываем вылезающий за границы контент */
+  overflow: hidden;
+  /* Сбрасываем любые свойства, которые могут повлиять на размер элемента */
+  border: 0;
+  padding: 0;
+  /* Вырезаем ту часть контента, которая должна отображаться. */
+  /* Устаревшее свойство clip для старых браузеров */
+  clip: rect(0 0 0 0);
+  /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
+  clip-path: inset(50%);
+  /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
+  margin: -1px;
 }
 
 .custum-checkbox {
@@ -834,7 +792,7 @@ footer {
   color: var(--accent-text-color);
   text-decoration: underline;
 }
-.order.form-button{
+.order.form-button {
   display: block;
   width: 200px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
