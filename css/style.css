@@ -481,7 +481,7 @@ li {
 .subscription {
   margin-left: 73px;
 }
-.subscription__button {
+.button--normal {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -511,22 +511,19 @@ li {
 }
 
 /* Стили Портфолио */
-.section.examples {
-  padding-top: 94px;
-  padding-bottom: 94px;
-}
-.examples-button {
+
+.list--center {
   margin-bottom: 50px;
 
   justify-content: center;
 }
-.examples-list {
+.item {
   margin-right: 8px;
 }
-.examples-list:last-child {
+.item:last-child {
   margin-right: 0;
 }
-.button-a {
+.button-filtr {
   padding: 6px 22px;
   border: none;
   border-radius: 4px;
@@ -546,34 +543,35 @@ li {
     background-color var(--time-animation) var(--time-function),
     box-shadow var(--time-animation) var(--time-function);
 }
-.button-a:focus,
-.button-a:hover {
+.button-filtr:focus,
+.button-filtr:hover {
   color: var(--additional-text-color);
   background-color: var(--accent-text-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
-.portfolio {
+.list--wrap {
   flex-wrap: wrap;
 }
-.portfolio-list {
+.list__portfolio {
   margin-right: 30px;
   margin-bottom: 30px;
 }
-.portfolio-list:nth-child(3n) {
+.list__portfolio:nth-child(3n) {
   margin-right: 0;
 }
-.portfolio-list:nth-last-child(-n + 3) {
+.list__portfolio:nth-last-child(-n + 3) {
   margin-bottom: 0;
 }
-.examples .title {
+.card__title {
   margin-bottom: 4px;
 
   font-size: 18px;
   line-height: 2;
   letter-spacing: 0.06em;
+  color: var(--main-title-text-color);
 }
-.border-box p {
+.card_text {
   margin-top: 0;
   margin-bottom: 0;
 
@@ -584,10 +582,10 @@ li {
   position: relative;
   overflow: hidden;
 }
-.portfolio-list img {
+.card_img {
   display: block;
 }
-.portfolio-list-description {
+.card__inner {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -605,7 +603,7 @@ li {
 
   transition: transform var(--time-animation) var(--time-function);
 }
-.portfolio-list-description p {
+.card__text {
   margin: 0;
 }
 .border-box {
@@ -614,7 +612,7 @@ li {
   border: 1px solid #eeeeee;
   border-top: transparent;
 }
-.portfolio-list-box {
+.link-box {
   display: block;
   /* border: 1px solid #EEEEEE; */
   max-width: 370px;
@@ -622,14 +620,14 @@ li {
   transition: border-top var(--time-animation) var(--time-function),
     box-shadow var(--time-animation) var(--time-function);
 }
-.portfolio-list-box:hover,
-.portfolio-list-box:focus {
+.link-box:hover,
+.link-box:focus {
   border-top: #eeeeee;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
-.portfolio-list-box:hover .portfolio-list-description,
-.portfolio-list-box:focus .portfolio-list-description {
+.link-box:hover .card__inner,
+.link-box:focus .card__inner {
   transform: translateY(0);
 }
 
@@ -689,17 +687,17 @@ li {
   border-radius: 50%;
   background-color: var(--main-background-color);
 }
-.button-close:hover .icon-close,
-.button-close:focus .icon-close {
+.button-close:hover .button-close__icon,
+.button-close:focus .button-close__icon {
   fill: var(--accent-text-color);
 }
-.icon-close {
+.button-close__icon {
   fill: var(--header-logo-color);
 }
 .form-modal {
   margin: 40px;
 }
-.form-modal h2 {
+.form-title {
   margin: 0 0 12px 0;
   font-size: 20px;
   color: var(--main-title-text-color);
@@ -739,7 +737,7 @@ li {
   fill: var(--accent-text-color);
 }
 
-.label textarea {
+.input-date--large {
   height: 120px;
   resize: none;
   color: rgba(117, 117, 117, 0.5);
@@ -747,29 +745,8 @@ li {
   padding: 12px 16px;
   margin-bottom: 20px;
 }
-.approval-box {
-  /* Удаляем элемент из потока документа */
-  position: absolute;
-  /* Временное решение для неверно произносимого, размазанного текста */
-  white-space: nowrap;
-  /* Устанавливаем минимально возможный размер (некоторые скринридеры игнорируют элементы с нулевой высотой и шириной) */
-  width: 1px;
-  height: 1px;
-  /* Скрываем вылезающий за границы контент */
-  overflow: hidden;
-  /* Сбрасываем любые свойства, которые могут повлиять на размер элемента */
-  border: 0;
-  padding: 0;
-  /* Вырезаем ту часть контента, которая должна отображаться. */
-  /* Устаревшее свойство clip для старых браузеров */
-  clip: rect(0 0 0 0);
-  /* clip-path для новых браузеров. inset(50%) определяет область вставки, которая позволит контенту исчезнуть.  */
-  clip-path: inset(50%);
-  /* Похоже, никто до конца не понимает, почему тут margin: -1px. Кроме того, это приводит к проблемам (читай: https://github.com/h5bp/html5-boilerplate/issues/1985). */
-  margin: -1px;
-}
 
-.custum-checkbox {
+.form-checkbox__text {
   display: inline-block;
   width: 16px;
   height: 15px;
@@ -777,7 +754,7 @@ li {
   border-radius: 2px;
   margin-right: 8px;
 }
-.approval-box:checked + .custum-checkbox {
+.approval-box:checked + .form-checkbox__text {
   background-image: url(../images/check.svg);
   background-size: contain;
   background-origin: border-box;
@@ -792,11 +769,9 @@ li {
   color: var(--accent-text-color);
   text-decoration: underline;
 }
-.order.form-button {
-  display: block;
-  width: 200px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+.modal__button {
+  display: flex;
+  margin-top: 30px;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 30px;
 }
