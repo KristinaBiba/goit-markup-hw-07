@@ -1,0 +1,27 @@
+.section-features {
+    margin-top: 94px;
+}
+
+.section-features__icon {
+    display: flex;
+    width: 270px;
+    height: 120px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--button-background);
+}
+
+.list__item:last-child,
+.section-meta__item:last-child {
+    margin-right: 0;
+}
+
+.section-features__subtitle {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--main-title-text-color);
+}
