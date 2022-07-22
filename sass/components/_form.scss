@@ -31,18 +31,20 @@
     padding-left: 42px;
     padding-right: 15px;
     height: 40px;
-    border: 1px solid rgba(33, 33, 33, 0.2);
+    border: 1px solid var(--input-date-border-color);
     border-radius: 4px;
     outline: none;
 
     font-size: 12px;
     line-height: 1.17;
     color: var(--main-text-color);
+
+    &:focus {
+        border-color: var(--accent-text-color);
+    }
 }
 
-.input-date:focus {
-    border-color: var(--accent-text-color);
-}
+
 
 .input-date:focus+.svg-modal {
     fill: var(--accent-text-color);
@@ -51,7 +53,7 @@
 .input-date--large {
     height: 120px;
     resize: none;
-    color: rgba(117, 117, 117, 0.5);
+    color: var();
     letter-spacing: 0.01em;
     padding: 12px 16px;
     margin-bottom: 20px;

@@ -2,24 +2,31 @@
     text-align: center;
     background-color: var(--hero-background-color);
     color: var(--additional-text-color);
+
+    &__background {
+        height: 600px;
+        max-width: 1600px;
+        margin-right: auto;
+        margin-left: auto;
+        padding-top: 200px;
+        padding-bottom: 200px;
+
+        background-image: linear-gradient(to right,
+                rgba(47, 48, 58, 0.4),
+                rgba(47, 48, 58, 0.4)),
+            url(../images/Bg-image-main.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &__button {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
 }
 
-.hero__background {
-    height: 600px;
-    max-width: 1600px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-top: 200px;
-    padding-bottom: 200px;
 
-    background-image: linear-gradient(to right,
-            rgba(47, 48, 58, 0.4),
-            rgba(47, 48, 58, 0.4)),
-        url(../images/Bg-image-main.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 .main-title {
     margin-top: 0;
     margin-bottom: 30px;
@@ -32,7 +39,3 @@
     text-transform: uppercase;
 }
 
-.hero__button {
-    padding-left: 32px;
-    padding-right: 32px;
-}
